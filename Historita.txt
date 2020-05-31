@@ -8,4 +8,6 @@ Y lo vamos a usar así como ella lo usó para las modificaciones
 
 de los documentos de github para poder tener buenas prácticas 
 
- de programación
+ de programación y ser un buen programador o al menos mantener el 
+
+ orden y control de versiones 
