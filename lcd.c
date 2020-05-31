@@ -12,6 +12,7 @@ void main (void){
     inicioDePuertos();
     int matriz_de_conf[4]= {limpiar_lcd, 0x38, 0x0C, 0x06};
     int mensaje_muestra[4] = {'P', 'O', 'G', 'L', 'A'};
+    int mensaje_muestra_linea_2[9] = {'S', 'I', 'N', ' ', 'H','U','E','V','O'};
     int variableDeCuenta = 0;
 CONFIG: 
     comando();
@@ -25,6 +26,16 @@ MUESTREO:
     caracter();
     for (variableDeCuenta = 0 ; variableDeCuenta < 5 , variableDeCuenta ++){
         puertoSalidaLCD = mensaje_muestra[variableDeCuenta];
+        enable();
+    }
+CAMBIAR_POS:
+    comando();
+    puertoSalidaLCD = 0xC3;
+    enable();
+SEGUNDO_MENSAJE:
+    caracter();
+    for (variableDeCuenta = 0 ; variableDeCuenta < 9 ; variableDeCuenta ++){
+        puertoSalidaLCD = mensaje_muestra_linea_2[variableDeCuenta];
         enable();
     }
     while (1);
