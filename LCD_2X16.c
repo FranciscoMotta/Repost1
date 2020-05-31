@@ -12,7 +12,7 @@ void Lcd_Escribir_Byte(unsigned char comando) {
 void Lcd_Limpiar(void) {
     LCD_RS = 0; //Ponemos el LCD en modo comando
     Lcd_Escribir_Byte(0x01);
-    __delay_ms(2);
+    __delay_ms(1);
 }
 
 void Lcd_Escribir_Cadena(const char *cadena) {
