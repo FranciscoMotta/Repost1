@@ -6,4 +6,6 @@ Esta es la historia de Francisco Motta, tiene
  
 Y lo vamos a usar así como ella lo usó para las modificaciones
 
-de los documentos de github
+de los documentos de github para poder tener buenas prácticas 
+
+ de programación
