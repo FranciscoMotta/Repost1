@@ -8,21 +8,13 @@ void caracter (void);
 void enable (void);
 void inicioDePuertos(void);
 void tiempo (void);
+void inicializar_lcd(void);
 void main (void){
-    inicioDePuertos();
-    int matriz_de_conf[4]= {limpiar_lcd, 0x38, 0x0C, 0x06};
     int mensaje_muestra[4] = {'P', 'O', 'G', 'L', 'A'};
     int mensaje_muestra_linea_2[9] = {'S', 'I', 'N', ' ', 'H','U','E','V','O'};
     int mensaje_final[6] = {'B', 'Y', 'E',' ',':',')'};
     int variableDeCuenta = 0;
-CONFIG: 
-    comando();
-    for(variableDeCuenta = 0 ; variableDeCuenta < 4 ; variableDeCuenta ++){
-       puertoSalidaLCD = matriz_de_conf[variableDeCuenta];
-       enable();
-    }
-    puertoSalidaLCD = 0x85;
-    enable();
+    inicializar_lcd();
 MUESTREO:
     caracter();
     for (variableDeCuenta = 0 ; variableDeCuenta < 5 , variableDeCuenta ++){
@@ -51,6 +43,18 @@ ULTIMO_MENSAJE:
     }
     while (1);
     return;
+}
+void inicializar_lcd (void){
+    inicioDePuertos();
+    int matriz_de_conf[4]= {limpiar_lcd, 0x38, 0x0C, 0x06};
+    CONFIG: 
+    comando();
+    for(variableDeCuenta = 0 ; variableDeCuenta < 4 ; variableDeCuenta ++){
+       puertoSalidaLCD = matriz_de_conf[variableDeCuenta];
+       enable();
+    }
+    puertoSalidaLCD = 0x85;
+    enable();
 }
 void tiempo (void){
     TIEMPO: 
