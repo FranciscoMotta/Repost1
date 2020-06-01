@@ -1,0 +1,65 @@
+[33mcommit 26525140ea50f1ae1fc70ff982b67d2d7d2af3c1[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Julio Francisco Motta <jmottaclaudio@gmail.com>
+Date:   Sun May 31 22:27:13 2020 -0500
+
+    Modificación en la funcion de salto de linea
+
+[1mdiff --git a/lcd.c b/lcd.c[m
+[1mindex 5f850d6..14cc99e 100644[m
+[1m--- a/lcd.c[m
+[1m+++ b/lcd.c[m
+[36m@@ -10,7 +10,7 @@[m [mvoid enable (void);[m
+ void inicioDePuertos(void);[m
+ void tiempo (void);[m
+ void inicializar_lcd(void);[m
+[31m-void funciones_de_salto(int linea);[m
+[32m+[m[32mvoid funciones_de_salto(int linea, int pos);[m
+ [m
+ void main (void){[m
+     int mensaje_muestra[4] = {'P', 'O', 'G', 'L', 'A'};[m
+[36m@@ -18,7 +18,7 @@[m [mvoid main (void){[m
+     int mensaje_final[6] = {'B', 'Y', 'E',' ',':',')'};[m
+     int variableDeCuenta = 0;[m
+     inicializar_lcd();[m
+[31m-    funciones_de_salto(1); //Estamos en la primera linea[m
+[32m+[m[32m    funciones_de_salto(1, 4); //Estamos en la primera linea[m
+ MUESTREO:[m
+     caracter();[m
+     for (variableDeCuenta = 0 ; variableDeCuenta < 5 , variableDeCuenta ++){[m
+[36m@@ -26,7 +26,7 @@[m [mMUESTREO:[m
+         enable();[m
+     }[m
+ CAMBIAR_POS:[m
+[31m-    funciones_de_salto(2); // Cambiamos a la segunda linea[m
+[32m+[m[32m    funciones_de_salto(2, 3); // Cambiamos a la segunda linea[m
+ SEGUNDO_MENSAJE:[m
+     caracter();[m
+     for (variableDeCuenta = 0 ; variableDeCuenta < 9 ; variableDeCuenta ++){[m
+[36m@@ -59,12 +59,16 @@[m [mvoid inicializar_lcd (void){[m
+     enable();[m
+ }[m
+ [m
+[31m-void funciones_de_salto (int linea){[m
+[32m+[m[32mvoid funciones_de_salto (int linea, int pos){[m
+[32m+[m[32m    /*[m
+[32m+[m[32m    Esta funcion busca modificar la posición del cursor de[m[41m [m
+[32m+[m[32m    lcd para poder ir a donde queramos[m
+[32m+[m[32m    */[m
+     char dataLine = 0x00;[m
+     comando();[m
+     switch (linea){[m
+         case 1: [m
+[31m-        dataLine = 0x80;[m
+[32m+[m[32m        dataLine = 0x80;[m[41m [m
+         break;[m
+         case 2:[m
+         dataLine = 0xC0;[m
+[36m@@ -73,7 +77,7 @@[m [mvoid funciones_de_salto (int linea){[m
+         dataLine = 0x80;[m
+         break;[m
+     }[m
+[31m-    puertoSalidaLCD = dataLine;[m
+[32m+[m[32m    puertoSalidaLCD = dataLine + pos;[m
+     enable();[m
+ }[m
+ [m
