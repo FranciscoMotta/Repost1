@@ -7,12 +7,13 @@ void comando (void);
 void caracter (void);
 void enable (void);
 void inicioDePuertos(void);
-
+void tiempo (void);
 void main (void){
     inicioDePuertos();
     int matriz_de_conf[4]= {limpiar_lcd, 0x38, 0x0C, 0x06};
     int mensaje_muestra[4] = {'P', 'O', 'G', 'L', 'A'};
     int mensaje_muestra_linea_2[9] = {'S', 'I', 'N', ' ', 'H','U','E','V','O'};
+    int mensaje_final[6] = {'B', 'Y', 'E',' ',':',')'};
     int variableDeCuenta = 0;
 CONFIG: 
     comando();
@@ -38,10 +39,26 @@ SEGUNDO_MENSAJE:
         puertoSalidaLCD = mensaje_muestra_linea_2[variableDeCuenta];
         enable();
     }
+    tiempo();
+BORRADO: 
+    comando();
+    puertoSalidaLCD = 0x01;
+    enable();
+ULTIMO_MENSAJE:
+    for (variableDeCuenta = 0 ; variableDeCuenta < 6 ; variableDeCuenta ++){
+        puertoSalidaLCD = mensaje_final[variableDeCuenta];
+        enable();
+    }
     while (1);
     return;
 }
-
+void tiempo (void){
+    TIEMPO: 
+    for (variableDeCuenta = 0 ; variableDeCuenta < 100 ; variableDeCuenta ++ ){
+        __delay_ms(10);
+    }
+    return;
+}
 void inicioDePuertos (void) {
     TRISB = 0x00;
     TRISCbits.RC0 = 0; //RS salida 
