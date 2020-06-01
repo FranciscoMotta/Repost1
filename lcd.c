@@ -1,6 +1,6 @@
 #include <xc.h> 
 
-#define _XTAL_FREQ 20000000UL 
+#define _XTAL_FREQ 20000000
 #define limpiar_lcd 0x01
 #define puertoSalidaLCD LATB
 

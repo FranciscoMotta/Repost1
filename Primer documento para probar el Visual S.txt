@@ -1,9 +1,0 @@
-Primer documento para probar el Visual Studio Code
-
-Esta es la historia de Francisco Motta, tiene 
-
-19 años de edad, nacido en Lima, Perú 
- 
-Y lo vamos a usar así como ella lo usó para las modificaciones
-
-de los documentos de github
