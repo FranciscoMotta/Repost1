@@ -3,18 +3,22 @@
 #define _XTAL_FREQ 20000000UL 
 #define limpiar_lcd 0x01
 #define puertoSalidaLCD LATB
+
 void comando (void);
 void caracter (void);
 void enable (void);
 void inicioDePuertos(void);
 void tiempo (void);
 void inicializar_lcd(void);
+void funciones_de_salto(int linea);
+
 void main (void){
     int mensaje_muestra[4] = {'P', 'O', 'G', 'L', 'A'};
     int mensaje_muestra_linea_2[9] = {'S', 'I', 'N', ' ', 'H','U','E','V','O'};
     int mensaje_final[6] = {'B', 'Y', 'E',' ',':',')'};
     int variableDeCuenta = 0;
     inicializar_lcd();
+    funciones_de_salto(1); //Estamos en la primera linea
 MUESTREO:
     caracter();
     for (variableDeCuenta = 0 ; variableDeCuenta < 5 , variableDeCuenta ++){
@@ -22,9 +26,7 @@ MUESTREO:
         enable();
     }
 CAMBIAR_POS:
-    comando();
-    puertoSalidaLCD = 0xC3;
-    enable();
+    funciones_de_salto(2); // Cambiamos a la segunda linea
 SEGUNDO_MENSAJE:
     caracter();
     for (variableDeCuenta = 0 ; variableDeCuenta < 9 ; variableDeCuenta ++){
@@ -56,6 +58,25 @@ void inicializar_lcd (void){
     puertoSalidaLCD = 0x85;
     enable();
 }
+
+void funciones_de_salto (int linea){
+    char dataLine = 0x00;
+    comando();
+    switch (linea){
+        case 1: 
+        dataLine = 0x80;
+        break;
+        case 2:
+        dataLine = 0xC0;
+        break;
+        default:
+        dataLine = 0x80;
+        break;
+    }
+    puertoSalidaLCD = dataLine;
+    enable();
+}
+
 void tiempo (void){
     TIEMPO: 
     for (variableDeCuenta = 0 ; variableDeCuenta < 100 ; variableDeCuenta ++ ){
