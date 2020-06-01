@@ -18,6 +18,7 @@ CUENTA:
         puertoDeLeds2 = ~variableDeCuenta;
         __delay_ms(100);
     }
+    goto CUENTA;
 }
 
 void inicioPuertos (void){
