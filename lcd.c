@@ -10,7 +10,7 @@ void enable (void);
 void inicioDePuertos(void);
 void tiempo (void);
 void inicializar_lcd(void);
-void funciones_de_salto(int linea);
+void funciones_de_salto(int linea, int pos);
 
 void main (void){
     int mensaje_muestra[4] = {'P', 'O', 'G', 'L', 'A'};
@@ -18,7 +18,7 @@ void main (void){
     int mensaje_final[6] = {'B', 'Y', 'E',' ',':',')'};
     int variableDeCuenta = 0;
     inicializar_lcd();
-    funciones_de_salto(1); //Estamos en la primera linea
+    funciones_de_salto(1, 4); //Estamos en la primera linea
 MUESTREO:
     caracter();
     for (variableDeCuenta = 0 ; variableDeCuenta < 5 , variableDeCuenta ++){
@@ -26,7 +26,7 @@ MUESTREO:
         enable();
     }
 CAMBIAR_POS:
-    funciones_de_salto(2); // Cambiamos a la segunda linea
+    funciones_de_salto(2, 3); // Cambiamos a la segunda linea
 SEGUNDO_MENSAJE:
     caracter();
     for (variableDeCuenta = 0 ; variableDeCuenta < 9 ; variableDeCuenta ++){
@@ -59,12 +59,16 @@ void inicializar_lcd (void){
     enable();
 }
 
-void funciones_de_salto (int linea){
+void funciones_de_salto (int linea, int pos){
+    /*
+    Esta funcion busca modificar la posición del cursor de 
+    lcd para poder ir a donde queramos
+    */
     char dataLine = 0x00;
     comando();
     switch (linea){
         case 1: 
-        dataLine = 0x80;
+        dataLine = 0x80; 
         break;
         case 2:
         dataLine = 0xC0;
@@ -73,7 +77,7 @@ void funciones_de_salto (int linea){
         dataLine = 0x80;
         break;
     }
-    puertoSalidaLCD = dataLine;
+    puertoSalidaLCD = dataLine + pos;
     enable();
 }
 
