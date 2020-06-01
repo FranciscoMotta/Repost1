@@ -82,7 +82,6 @@ void funciones_de_salto (int linea, int pos){
 }
 
 void tiempo (void){
-    TIEMPO: 
     for (variableDeCuenta = 0 ; variableDeCuenta < 100 ; variableDeCuenta ++ ){
         __delay_ms(10);
     }
