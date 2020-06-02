@@ -22,6 +22,12 @@ CUENTA:
         puertoDeLeds2 = ~variableDeCuenta;
         __delay_ms(100);
     }
+CUENTA2:
+    for (variableDeCuenta = 255 ; variableDeCuenta >= 0 ; variableDeCuenta --){
+        puertoDeLeds = ~variableDeCuenta;
+        puertoDeLeds = variableDeCuenta;
+        __delay_ms(100);
+    }
     goto CUENTA;
 }
 
