@@ -1,2 +1,7 @@
 Acá tenemos un texto plano que no sirve para nada
+<<<<<<< HEAD
 Pero hacemos esta linea en el master
+=======
+
+pero nos va a servir para poder probar el merge
+>>>>>>> modificaciones
