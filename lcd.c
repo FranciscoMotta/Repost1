@@ -18,7 +18,7 @@ void funciones_de_salto(int linea, int pos);
 void main (void){
 INICIO:
     int mensaje_muestra[4] = {'P', 'O', 'G', 'L', 'A'};
-    int mensaje_muestra_linea_2[9] = {'S', 'I', 'N', ' ', 'H','U','E','V','O'};
+    int mensaje_muestra_linea_2[9] = {'C', 'O', 'N', ' ', 'H','U','E','V','O'};
     int mensaje_final[6] = {'B', 'Y', 'E',' ',':',')'};
     int variableDeCuenta = 0;
     inicializar_lcd();
