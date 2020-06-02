@@ -4,6 +4,8 @@
 #define limpiar_lcd 0x01
 #define puertoSalidaLCD LATB
 
+int variableDeCuenta2 = 0;
+
 void comando (void);
 void caracter (void);
 void enable (void);
@@ -11,6 +13,7 @@ void inicioDePuertos(void);
 void tiempo (void);
 void inicializar_lcd(void);
 void funciones_de_salto(int linea, int pos);
+
 
 void main (void){
 INICIO:
@@ -40,7 +43,7 @@ BORRADO:
     puertoSalidaLCD = 0x01;
     enable();
 ULTIMO_MENSAJE:
-    for (variableDeCuenta = 0 ; variableDeCuenta < 6 ; variableDeCuenta ++){
+    for (variableDeCuenta2 = 0 ; variableDeCuenta2 < 6 ; variableDeCuenta2 ++){
         puertoSalidaLCD = mensaje_final[variableDeCuenta];
         enable();
     }
