@@ -1,7 +1,12 @@
 Acá tenemos un texto plano que no sirve para nada
 <<<<<<< HEAD
+<<<<<<< HEAD
 Pero hacemos esta linea en el master
 =======
 
 pero nos va a servir para poder probar el merge
 >>>>>>> modificaciones
+=======
+Pero hacemos esta linea en el master
+ No da :'v 
+>>>>>>> mensaje
