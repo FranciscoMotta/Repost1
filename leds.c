@@ -10,8 +10,10 @@ de los ciclos de instrucción
 #define trisDePuertoDeLeds TRISB 
 #define puertoDeLeds2 LATD
 #define trisDePuertoDeLeds2 TRISD 
+#define limpiarPuertos 0x00
 
 void inicioPuertos (void);
+void limpiarPuertos (void);
 int variableDeCuenta = 0;
 
 void main (void){
@@ -34,4 +36,9 @@ CUENTA2:
 void inicioPuertos (void){
     trisDePuertoDeLeds = 0x00;
     trisDePuertoDeLeds2 = 0x00;
+    limpiarPuertos();
+}
+void limpiarPuertos (void){
+    puertoDeLeds = limpiarPuertos;
+    puertoDeLeds2 = limpiarPuertos;
 }
