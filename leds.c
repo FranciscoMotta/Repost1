@@ -1,7 +1,11 @@
 
 #include <xc.h> 
 
-#define _XTAL_FREQ 20000000
+#define _XTAL_FREQ 4000000UL
+/*
+Cambiamos la frecuencia del oscilador para ver la variación 
+de los ciclos de instrucción
+*/
 #define puertoDeLeds LATB 
 #define trisDePuertoDeLeds TRISB 
 #define puertoDeLeds2 LATD
