@@ -13,7 +13,7 @@ void inicioDePuertos(void);
 void tiempo (void);
 void inicializar_lcd(void);
 void funciones_de_salto(int linea, int pos);
-
+void limpiarLCD (void);
 
 void main (void){
 INICIO:
@@ -43,6 +43,9 @@ BORRADO:
     puertoSalidaLCD = 0x01;
     enable();
 ULTIMO_MENSAJE:
+    limpiarLCD();
+    caracter();
+    limpiar
     for (variableDeCuenta2 = 0 ; variableDeCuenta2 < 6 ; variableDeCuenta2 ++){
         puertoSalidaLCD = mensaje_final[variableDeCuenta];
         enable();
@@ -112,4 +115,10 @@ void enable (void){
     __delay_ms(3);
     PORTCbits.RC1 = 0; // Enable = 0 
     __delay_ms(2); 
+}
+
+void limpiarLCD (void){
+    comando();
+    puertoSalidaLCD = limpiar_lcd;
+    enable();
 }
