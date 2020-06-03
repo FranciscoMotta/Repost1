@@ -17,13 +17,8 @@ void limpiarLCD (void);
 
 void main (void){
 INICIO:
-<<<<<<< HEAD
-    int mensaje_muestra[4] = {'R', 'O', 'G', 'L', 'A'};
-    int mensaje_muestra_linea_2[9] = {'S', 'I', 'N', ' ', 'H','U','E','V','O'};
-=======
-    int mensaje_muestra[4] = {'P', 'O', 'G', 'L', 'A'};
+    int mensaje_muestra[4] = {'R', 'U', 'N', 'T', 'U'};
     int mensaje_muestra_linea_2[9] = {'C', 'O', 'N', ' ', 'H','U','E','V','O'};
->>>>>>> mensaje
     int mensaje_final[6] = {'B', 'Y', 'E',' ',':',')'};
     int variableDeCuenta = 0;
     inicializar_lcd();
@@ -35,7 +30,7 @@ MUESTREO:
         enable();
     }
 CAMBIAR_POS:
-    funciones_de_salto(2, 3); // Cambiamos a la segunda linea
+    funciones_de_salto(2, 4); // Cambiamos a la segunda linea
 SEGUNDO_MENSAJE:
     caracter();
     for (variableDeCuenta = 0 ; variableDeCuenta < 9 ; variableDeCuenta ++){
