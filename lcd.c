@@ -116,6 +116,9 @@ void enable (void){
 
 void limpiarLCD (void){
     comando();
+    puertoSalidaLCD = 0x8C; 
+    enable();
+    //Añadimos un cursor de ultimo momento
     puertoSalidaLCD = limpiar_lcd;
     enable();
 }
