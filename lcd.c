@@ -95,7 +95,7 @@ void tiempo (void){
     return;
 }
 void inicioDePuertos (void) {
-    TRISB = 0x00;
+    TRISB = limpiar_lcd;
     TRISCbits.RC0 = 0; //RS salida 
     TRISCbits.RC1 = 0; //ENABLE salida 
 }
