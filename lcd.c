@@ -25,7 +25,7 @@ INICIO:
     funciones_de_salto(1, 5); //Estamos en la primera linea
 MUESTREO:
     caracter();
-    for (variableDeCuenta = 0 ; variableDeCuenta < 5 , variableDeCuenta ++){
+    for (variableDeCuenta2 = 0 ; variableDeCuenta2 < 5 , variableDeCuenta2 ++){
         puertoSalidaLCD = mensaje_muestra[variableDeCuenta];
         enable();
     }
@@ -92,7 +92,7 @@ void tiempo (void){
     return;
 }
 void inicioDePuertos (void) {
-    TRISB = 0x00;
+    TRISB = limpiar_lcd;
     TRISCbits.RC0 = 0; //RS salida 
     TRISCbits.RC1 = 0; //ENABLE salida 
 }
