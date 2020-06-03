@@ -115,10 +115,22 @@ void enable (void){
 }
 
 void limpiarLCD (void){
+    int varProb = 0 ;
     comando();
+<<<<<<< HEAD
     puertoSalidaLCD = 0x8C; 
     enable();
     //Añadimos un cursor de ultimo momento
+=======
+PROB: 
+>>>>>>> hotfix
     puertoSalidaLCD = limpiar_lcd;
     enable();
+LIMPIEZA_PROB: 
+    if (varProb == 1){
+        return ;
+    } else {
+        varProb ++;
+        goto PROB;
+    }
 }
