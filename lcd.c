@@ -25,11 +25,7 @@ INICIO:
     funciones_de_salto(1, 5); //Estamos en la primera linea
 MUESTREO:
     caracter();
-<<<<<<< HEAD
-    for (variableDeCuenta2 = 0 ; variableDeCuenta < 5 , variableDeCuenta ++){
-=======
     for (variableDeCuenta2 = 0 ; variableDeCuenta2 < 5 , variableDeCuenta2 ++){
->>>>>>> modify
         puertoSalidaLCD = mensaje_muestra[variableDeCuenta];
         enable();
     }
