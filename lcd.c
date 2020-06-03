@@ -4,6 +4,12 @@
 #define limpiar_lcd 0x01
 #define puertoSalidaLCD LATB
 
+#define RS LATCbits.RC0
+#define EN LATCbits.RC1
+
+#define NIVEL_ALTO 1
+#define NIVEL_BAJO 0
+
 int variableDeCuenta2 = 0;
 
 void comando (void);
@@ -93,30 +99,33 @@ void tiempo (void){
 }
 void inicioDePuertos (void) {
     TRISB = limpiar_lcd;
-    TRISCbits.RC0 = 0; //RS salida 
-    TRISCbits.RC1 = 0; //ENABLE salida 
+    TRISCbits.RC0 = NIVEL_BAJO; //RS salida 
+    TRISCbits.RC1 = NIVEL_BAJO; //ENABLE salida 
 }
 
 void comando (void){
-    PORTCbits.RC0 = 0 ; // RS = 0
+    RS = NIVEL_BAJO; // RS = 0
     __delay_ms(5);
 }
 
 void caracter (void){
-    PORTCbits.RC0 = 1; //RS = 1
+    RS = NIVEL_ALTO; //RS = 1
     __delay_ms(5);
 }
 
 void enable (void){
-    PORTCbits.RC1 = 1; // Enable = 1
+    EN = NIVEL_ALTO; // Enable = 1
     __delay_ms(3);
-    PORTCbits.RC1 = 0; // Enable = 0 
+    EN = NIVEL_BAJO; // Enable = 0 
     __delay_ms(2); 
 }
 
 void limpiarLCD (void){
     int varProb = 0 ;
     comando();
+    puertoSalidaLCD = 0x8C; 
+    enable();
+    //Añadimos un cursor de ultimo momento
 PROB: 
     puertoSalidaLCD = limpiar_lcd;
     enable();
@@ -127,4 +136,4 @@ LIMPIEZA_PROB:
         varProb ++;
         goto PROB;
     }
-}
+}  
