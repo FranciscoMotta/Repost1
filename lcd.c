@@ -4,6 +4,9 @@
 #define limpiar_lcd 0x01
 #define puertoSalidaLCD LATB
 
+#define RS LATCbits.RC0
+#define EN LATCbits.RC1
+
 int variableDeCuenta2 = 0;
 
 void comando (void);
@@ -98,32 +101,29 @@ void inicioDePuertos (void) {
 }
 
 void comando (void){
-    PORTCbits.RC0 = 0 ; // RS = 0
+    RS = 0 ; // RS = 0
     __delay_ms(5);
 }
 
 void caracter (void){
-    PORTCbits.RC0 = 1; //RS = 1
+    RS = 1; //RS = 1
     __delay_ms(5);
 }
 
 void enable (void){
-    PORTCbits.RC1 = 1; // Enable = 1
+    EN = 1; // Enable = 1
     __delay_ms(3);
-    PORTCbits.RC1 = 0; // Enable = 0 
+    EN = 0; // Enable = 0 
     __delay_ms(2); 
 }
 
 void limpiarLCD (void){
     int varProb = 0 ;
     comando();
-<<<<<<< HEAD
     puertoSalidaLCD = 0x8C; 
     enable();
     //Añadimos un cursor de ultimo momento
-=======
 PROB: 
->>>>>>> hotfix
     puertoSalidaLCD = limpiar_lcd;
     enable();
 LIMPIEZA_PROB: 
@@ -133,4 +133,4 @@ LIMPIEZA_PROB:
         varProb ++;
         goto PROB;
     }
-}
+}  
