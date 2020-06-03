@@ -115,7 +115,16 @@ void enable (void){
 }
 
 void limpiarLCD (void){
+    int varProb = 0 ;
     comando();
+PROB: 
     puertoSalidaLCD = limpiar_lcd;
     enable();
+LIMPIEZA_PROB: 
+    if (varProb == 1){
+        return ;
+    } else {
+        varProb ++;
+        goto PROB;
+    }
 }
