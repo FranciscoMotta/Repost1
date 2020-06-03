@@ -25,7 +25,7 @@ INICIO:
     funciones_de_salto(1, 5); //Estamos en la primera linea
 MUESTREO:
     caracter();
-    for (variableDeCuenta = 0 ; variableDeCuenta < 5 , variableDeCuenta ++){
+    for (variableDeCuenta2 = 0 ; variableDeCuenta < 5 , variableDeCuenta ++){
         puertoSalidaLCD = mensaje_muestra[variableDeCuenta];
         enable();
     }
@@ -33,7 +33,7 @@ CAMBIAR_POS:
     funciones_de_salto(2, 3); // Cambiamos a la segunda linea
 SEGUNDO_MENSAJE:
     caracter();
-    for (variableDeCuenta = 0 ; variableDeCuenta < 9 ; variableDeCuenta ++){
+    for (variableDeCuenta2 = 0 ; variableDeCuenta2 < 9 ; variableDeCuenta2 ++){
         puertoSalidaLCD = mensaje_muestra_linea_2[variableDeCuenta];
         enable();
     }
