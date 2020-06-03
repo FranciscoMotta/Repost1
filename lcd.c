@@ -80,9 +80,6 @@ void funciones_de_salto (int linea, int pos){
         case 2:
         dataLine = 0xC0;
         break;
-        default:
-        dataLine = 0x80;
-        break;
     }
     puertoSalidaLCD = dataLine + pos;
     enable();
