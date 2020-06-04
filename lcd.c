@@ -2,6 +2,7 @@
 
 #define _XTAL_FREQ 20000000
 #define limpiar_lcd 0x01
+//Se usa el LATD porque usaré el B para las interrupciones futuras 
 #define puertoSalidaLCD LATD
 
 #define RS LATCbits.RC0
@@ -98,7 +99,7 @@ void tiempo (void){
     return;
 }
 void inicioDePuertos (void) {
-    TRISB = limpiar_lcd;
+    TRISD = limpiar_lcd;
     TRISCbits.RC0 = NIVEL_BAJO; //RS salida 
     TRISCbits.RC1 = NIVEL_BAJO; //ENABLE salida 
 }
