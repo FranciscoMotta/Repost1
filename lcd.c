@@ -2,7 +2,7 @@
 
 #define _XTAL_FREQ 20000000
 #define limpiar_lcd 0x01
-#define puertoSalidaLCD LATB
+#define puertoSalidaLCD LATD
 
 #define RS LATCbits.RC0
 #define EN LATCbits.RC1
